@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Xbox | Control inalámbrico en WebAR</title>
+
+  <script
+    type="module"
+    src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    :root {
+      --color-principal: #107C10;
+      --color-secundario: #ffffff;
+      --color-gris: #eeeeee;
+      --color-promocion: #107C10;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--color-secundario);
+      color: #111111;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--color-principal);
+      color: var(--color-secundario);
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      letter-spacing: 3px;
+    }
+
+    main {
+      width: min(1100px, 92%);
+      margin: 35px auto;
+    }
+
+    .producto {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .visor {
+      min-height: 500px;
+      background-color: var(--color-gris);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 500px;
+      background-color: var(--color-gris);
+    }
+
+    .ar-button {
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      transform: translateX(-50%);
+      border: none;
+      border-radius: 30px;
+      padding: 14px 24px;
+      background-color: var(--color-principal);
+      color: var(--color-secundario);
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .informacion h2 {
+      font-size: 2.3rem;
+      margin-bottom: 15px;
+    }
+
+    .descripcion {
+      font-size: 1.05rem;
+      margin-bottom: 20px;
+    }
+
+    .beneficios {
+      margin: 20px 0;
+      padding-left: 22px;
+    }
+
+    .precio-actual {
+      color: var(--color-promocion);
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .cta {
+      display: inline-block;
+      background-color: var(--color-principal);
+      color: var(--color-secundario);
+      padding: 15px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: opacity 0.2s ease;
+    }
+
+    .cta:hover {
+      opacity: 0.8;
+    }
+
+    .qr-section {
+      margin-top: 45px;
+      padding: 30px;
+      background-color: var(--color-gris);
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    #qrCode {
+      display: flex;
+      justify-content: center;
+      margin: 20px auto;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 25px;
+      background-color: var(--color-principal);
+      color: var(--color-secundario);
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .producto {
+        grid-template-columns: 1fr;
+      }
+
+      .visor,
+      model-viewer {
+        min-height: 400px;
+        height: 400px;
+      }
+
+      .informacion h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <h1>XBOX</h1>
+    <p>Libertad, precisión y comodidad para jugar</p>
+  </header>
+
+  <main>
+    <section class="producto">
+      <div class="visor">
+        <model-viewer
+          src="modelo.glb"
+          alt="Modelo tridimensional de un control inalámbrico de Xbox"
+          ar
+          ar-modes="webxr scene-viewer quick-look"
+          ar-placement="floor"
+          ar-scale="auto"
+          camera-controls
+          auto-rotate
+          shadow-intensity="1.2"
+          exposure="1"
+          touch-action="pan-y">
+
+```
+      <button class="ar-button" slot="ar-button" type="button">
+        Ver en mi espacio
+      </button>
+    </model-viewer>
+  </div>
+
+  <div class="informacion">
+    <h2>Control inalámbrico de Xbox</h2>
+
+    <p class="descripcion">
+      Control inalámbrico de Xbox diseñado para ofrecer comodidad,
+      precisión y una experiencia de juego envolvente. Ideal para
+      disfrutar tus videojuegos favoritos con mayor libertad y control.
+    </p>
+
+    <ul class="beneficios">
+      <li>Diseño cómodo para largas sesiones de juego.</li>
+      <li>Control preciso para una experiencia más envolvente.</li>
+      <li>Conectividad inalámbrica para mayor libertad de movimiento.</li>
+      <li>Ideal para jóvenes y adultos aficionados a los videojuegos.</li>
+    </ul>
+
+    <p class="precio-actual">Precio: $216.387 COP</p>
+
+    <p class="descripcion">
+      Lleva tu experiencia de juego al siguiente nivel con el control de Xbox.
+    </p>
+
+    <!-- Reemplazar el valor de href por el enlace de Amazon proporcionado -->
+    <a
+      class="cta"
+      href="ENLACE_DE_AMAZON"
+      target="_blank"
+      rel="noopener noreferrer">
+      Comprar ahora
+    </a>
+  </div>
+</section>
+
+<section class="qr-section">
+  <h2>Explora el control desde tu celular</h2>
+  <p>
+    Escanea el código QR para abrir la experiencia y usar la realidad
+    aumentada desde un dispositivo compatible.
+  </p>
+
+  <div id="qrCode"></div>
+</section>
+```
+
+  </main>
+
+  <footer>
+    <p>Xbox · Experiencia comercial WebAR</p>
+  </footer>
+
+  <script>
+    new QRCode(document.querySelector("#qrCode"), {
+      text: window.location.href,
+      width: 180,
+      height: 180,
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  </script>
+
+</body>
+</html>
